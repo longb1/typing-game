@@ -48,3 +48,11 @@ body, .text-input{
 .text-input:focus{
     border-color: green;
 }
+
+.correct{
+    color: green;
+}
+
+.incorrect{
+    color:red;
+}
