@@ -16,8 +16,8 @@
             <fieldset>
                 <legend>Login</legend>
                 <ul>
-                    <li><label for="loginUserName">Username</label><input name="loginUserName" type="text" id="loginUserName"></li>
-                    <li><label for="loginPassword">Password</label><input name="loginPassword" type="password" id="loginPassword"></li>
+                    <li><label for="loginUser">Username*</label><input name="loginUser" type="text" id="loginUser" required></li>
+                    <li><label for="loginPass">Password*</label><input name="loginPass" type="password" id="loginPass" required></li>
                     <li><button type="submit">Submit</button></li>
                 </ul>
             </fieldset>
@@ -27,9 +27,10 @@
             <fieldset>
                 <legend>Register An Account</legend>
                 <ul>
-                    <li><label for="regUserName">Username</label><input name="regUserName" type="text" id="regUserName"></li>
-                    <li><label for="regPassword">Password</label><input name="regPassword" type="password" id="regPassword"></li>
-                    <li><label for="email">Email</label><input name="email" type="email" id="email"></li>
+                    <li><label for="regUser">Username*</label><input name="regUser" type="text" id="regUser" required></li>
+                    <li><label for="regPass">Password*</label><input name="regPass" type="password" id="regPass" required></li>
+                    <li><label for="regPassConf">Confirm Password*</label><input name="regPassConf" type="password" id="regPassConf" required></li>
+                    <li><label for="email">Email*</label><input name="email" type="email" id="email" required></li>
                     <li><label for="firstName">First Name</label><input name="firstName" type="text" id="firstName"></li>
                     <li><label for="lastName">Last Name</label><input name="lastName" type="text" id="lastName"></li>
                     <li><label for="gender">Gender</label><input name="gender" type="text" id="gender"></li>
