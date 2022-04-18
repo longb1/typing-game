@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="login_script.js" defer></script>
+    <link rel="stylesheet" href="login_styles.css">
+    <title>Account</title>
+</head>
+<body>
+    <h1>create or register account</h1>
+    <div class="formContainer">
+        <!--Login Form-->
+        <form action="http://httpbin.org/post" method="post">
+            <fieldset>
+                <legend>Login</legend>
+                <ul>
+                    <li><label for="loginUserName">Username</label><input name="loginUserName" type="text" id="loginUserName"></li>
+                    <li><label for="loginPassword">Password</label><input name="loginPassword" type="password" id="loginPassword"></li>
+                    <li><button type="submit">Submit</button></li>
+                </ul>
+            </fieldset>
+        </form>
+        <!--Registration Form-->
+        <form action="http://httpbin.org/post" method="post">
+            <fieldset>
+                <legend>Register An Account</legend>
+                <ul>
+                    <li><label for="regUserName">Username</label><input name="regUserName" type="text" id="regUserName"></li>
+                    <li><label for="regPassword">Password</label><input name="regPassword" type="password" id="regPassword"></li>
+                    <li><label for="email">Email</label><input name="email" type="email" id="email"></li>
+                    <li><label for="firstName">First Name</label><input name="firstName" type="text" id="firstName"></li>
+                    <li><label for="lastName">Last Name</label><input name="lastName" type="text" id="lastName"></li>
+                    <li><label for="gender">Gender</label><input name="gender" type="text" id="gender"></li>
+                    <li><button type="submit">Submit</button></li>
+                </ul>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
