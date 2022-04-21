@@ -9,35 +9,48 @@
     <title>Account</title>
 </head>
 <body>
-    <h1>create or register account</h1>
-    <div class="formContainer">
-        <!--Login Form-->
-        <form action="http://httpbin.org/post" method="post">
-            <fieldset>
-                <legend>Login</legend>
-                <ul>
-                    <li><label for="loginUser">Username*</label><input name="loginUser" type="text" id="loginUser" required></li>
-                    <li><label for="loginPass">Password*</label><input name="loginPass" type="password" id="loginPass" required></li>
-                    <li><button type="submit">Submit</button></li>
-                </ul>
-            </fieldset>
-        </form>
-        <!--Registration Form-->
-        <form action="http://httpbin.org/post" method="post">
-            <fieldset>
-                <legend>Register An Account</legend>
-                <ul>
-                    <li><label for="regUser">Username*</label><input name="regUser" type="text" id="regUser" required></li>
-                    <li><label for="regPass">Password*</label><input name="regPass" type="password" id="regPass" required></li>
-                    <li><label for="regPassConf">Confirm Password*</label><input name="regPassConf" type="password" id="regPassConf" required></li>
-                    <li><label for="email">Email*</label><input name="email" type="email" id="email" required></li>
-                    <li><label for="firstName">First Name</label><input name="firstName" type="text" id="firstName"></li>
-                    <li><label for="lastName">Last Name</label><input name="lastName" type="text" id="lastName"></li>
-                    <li><label for="gender">Gender</label><input name="gender" type="text" id="gender"></li>
-                    <li><button type="submit">Submit</button></li>
-                </ul>
-            </fieldset>
-        </form>
+    <h1>Create or Register and account to track your progress!</h1>
+    <div class="allContent">
+        <div class="pictureBg">
+        <!-- Background Picture -->
+        <img src="keyboard-theme.jpg" alt="keyboard-theme-pic" id="backgroundPic">
+        </div>
+        <div class="formContainer">
+            <!--Login Form-->
+            <form action="http://httpbin.org/post" method="post">
+                <fieldset>
+                    <legend>Login</legend>
+                    <ul>
+                        <li>
+                            <label for="loginUser">Username*</label>
+                            <input name="loginUser" type="text" id="loginUser" required>
+                        </li>
+                        <li>
+                            <label for="loginPass">Password*</label>
+                            <input name="loginPass" type="password" id="loginPass" required>
+                        </li>
+                        <li><button type="submit">Submit</button></li>
+                    </ul>
+                </fieldset>
+            </form>
+            <!--Registration Form-->
+            <form action="http://httpbin.org/post" method="post">
+                <fieldset>
+                    <legend>Register An Account</legend>
+                    <ul>
+                        <li><label for="regUser">Username*</label><input name="regUser" type="text" id="regUser" required></li>
+                        <li><label for="regPass">Password*</label><input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="regPass" type="password" id="regPass" required></li>
+                        <li><label for="regPassConf">Confirm Password*</label><input name="regPassConf" type="password" id="regPassConf" required></li>
+                        <li><label for="email">Email*</label><input name="email" type="email" id="email" required></li>
+                        <li><label for="firstName">First Name</label><input name="firstName" type="text" id="firstName"></li>
+                        <li><label for="lastName">Last Name</label><input name="lastName" type="text" id="lastName"></li>
+                        <li><label for="gender">Gender</label><input name="gender" type="text" id="gender"></li>
+                        <li><button type="submit">Submit</button></li>
+                    </ul>
+                </fieldset>
+            </form>
+        </div>
     </div>
+    
 </body>
 </html>
