@@ -2,7 +2,20 @@
     box-sizing: border-box;
 }
 
-body{
+header{
+    background-color: pink;
+    border:2px dashed red;
+}
+
+nav ul{
+    width:100%;
+    background-color: blueviolet;
+    list-style:none;
+    display:flex;
+    justify-content: space-between;
+}
+
+section{
     display:flex;
     justify-content: center;
     align-items: center;
@@ -24,8 +37,8 @@ body, .text-input{
 }
 
 .timer{
-    position: absolute;
-    top: 2rem;
+    /* position: absolute;
+    top: 2rem; */
     font-size:3rem;
     color: white;
     font-weight:bold;
