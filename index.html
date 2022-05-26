@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TypeA</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="script.js" defer></script>
+    <script src="scripts/script.js" defer></script>
+    <script src="scripts/animate-race.js" defer></script>
 </head>
 <body>
     <header>
@@ -22,8 +23,21 @@
     </header>
 
     <section>
-        <button type="button">Click Me!</button> 
         <div class="timer" id="timer"></div>
+        <div id="graphic-display" data-graphic-display>
+            <button id="raceBtn" type="button">race now!</button>
+            <table id="race-track">
+                <tr>
+                    <td>get ready to goo</td>
+                </tr>
+                <tr>
+                    <td><div id="racer">3=></div></td>
+                </tr>
+                <tr>
+                    <td>racer 2</td>
+                </tr>
+            </table>
+        </div>
         <div class="container">
             <div class="text-display" id="textDisplay"></div>
             <textarea class="text-input" id="textInput" autofocus></textarea>

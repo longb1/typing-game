@@ -24,6 +24,7 @@ nav ul{
 
 section{
     display:flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -42,9 +43,23 @@ body, .text-input{
     max-width: 90%;
 }
 
+#graphic-display{
+    width:700px;
+    height:300px;
+    background-color: beige;
+    border-radius: 20px;
+}
+
+#race-track{
+    width:100%;
+    border:1px dashed red;
+}
+
+#racer{
+    text-align: end;
+}
+
 .timer{
-    /* position: absolute;
-    top: 2rem; */
     font-size:3rem;
     color: white;
     font-weight:bold;
