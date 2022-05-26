@@ -1,18 +1,25 @@
 *{
     box-sizing: border-box;
+    margin:0;
+    padding:0;
 }
 
 header{
     background-color: pink;
     border:2px dashed red;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
-nav ul{
+nav{
     width:100%;
-    background-color: blueviolet;
+}
+nav ul{
+    background-color: seashell;
     list-style:none;
     display:flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 section{
@@ -20,7 +27,6 @@ section{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin:0;
     background-color: grey;
 }
 
