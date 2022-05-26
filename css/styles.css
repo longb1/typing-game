@@ -45,7 +45,7 @@ body, .text-input{
 
 #graphic-display{
     width:700px;
-    height:300px;
+    height:200px;
     background-color: beige;
     border-radius: 20px;
 }
@@ -88,5 +88,5 @@ body, .text-input{
 }
 
 .incorrect{
-    color:red;
+    background-color:rgba(255,0,0,0.3);
 }
