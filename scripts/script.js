@@ -35,16 +35,15 @@ function getRandomQuote(){
 }
 
 async function renderNewQuote(){
-    const QUOTE = await getRandomQuote()
     quoteDisplayElement.innerHTML=''
-    QUOTE.split('').forEach(character =>{
-        const characterSpan = document.createElement('span')
-        characterSpan.innerText = character
-        quoteDisplayElement.appendChild(characterSpan)
-    })
-    quoteInputElement.value = null
+    const QUOTE = await getRandomQuote()
     startTimer()
+    quoteInputElement.value = null
 }
+
+const currentQuote = renderNewQuote;
+
+
 let startTime
 function startTimer(){
     timerElement.innerText=0
