@@ -4,6 +4,5 @@ export default function reset(){
     wordArray=[];
     quoteDisplayElement.innerHTML=''
     quoteInputElement.value = null
-    //textInput no pointer (blank it out cant access)
-    //textdisplat empty
+    quoteInputElement.disabled="true";
 }
