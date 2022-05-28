@@ -1,6 +1,7 @@
 import move from "./animate-race.js"
 import splitByChar from "./split-by-char.js"
 import splitByWord from "./split-by-word.js"
+import inputField from "./input-field.js"
 
 const RANDOM_QUOTE_API_URL = 'http://api.quotable.io/random'
 const quoteDisplayElement = document.getElementById('textDisplay')
@@ -8,28 +9,28 @@ const quoteInputElement = document.getElementById('textInput')
 const timerElement = document.getElementById('timer')
 
 
-quoteInputElement.addEventListener('input', ()=>{
-    const arrayQuote = quoteDisplayElement.querySelectorAll('span')
-    const arrayValue = quoteInputElement.value.split('')
-    let correct = true
-    arrayQuote.forEach((characterSpan, index)=>{
-        const character = arrayValue[index]
-        if(character==null){
-            characterSpan.classList.remove('correct')
-            characterSpan.classList.remove('incorrect')
-            correct = false
-        } else if(character===characterSpan.innerText){
-            characterSpan.classList.add('correct')
-            characterSpan.classList.remove('incorrect')
-        }else{
-            characterSpan.classList.remove('correct')
-            characterSpan.classList.add('incorrect')
-            correct = false
-        }
-    })
+// quoteInputElement.addEventListener('input', ()=>{
+//     const arrayQuote = quoteDisplayElement.querySelectorAll('span')
+//     const arrayValue = quoteInputElement.value.split('')
+//     let correct = true
+//     arrayQuote.forEach((characterSpan, index)=>{
+//         const character = arrayValue[index]
+//         if(character==null){
+//             characterSpan.classList.remove('correct')
+//             characterSpan.classList.remove('incorrect')
+//             correct = false
+//         } else if(character===characterSpan.innerText){
+//             characterSpan.classList.add('correct')
+//             characterSpan.classList.remove('incorrect')
+//         }else{
+//             characterSpan.classList.remove('correct')
+//             characterSpan.classList.add('incorrect')
+//             correct = false
+//         }
+//     })
 
-    if(correct) renderNewQuote()
-})
+//     if(correct) renderNewQuote()
+// })
 
 function getRandomQuote(){
     return fetch(RANDOM_QUOTE_API_URL)
@@ -40,8 +41,10 @@ function getRandomQuote(){
 async function renderNewQuote(){
     quoteDisplayElement.innerHTML=''
     const QUOTE = await getRandomQuote()
+    
     startTimer()
     quoteInputElement.value = null
+    return QUOTE
 }
 
 const currentQuote = renderNewQuote;
