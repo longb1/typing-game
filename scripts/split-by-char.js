@@ -1,5 +1,5 @@
 //split by character, for styling purposes
-function splitByWord(){
+export default function splitByChar(){
     
     QUOTE.split('').forEach(character =>{
         const characterSpan = document.createElement('span')

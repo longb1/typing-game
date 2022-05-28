@@ -1,3 +1,6 @@
+import move from "./animate-race.js"
+import splitByChar from "./split-by-char.js"
+import splitByWord from "./split-by-word.js"
 
 const RANDOM_QUOTE_API_URL = 'http://api.quotable.io/random'
 const quoteDisplayElement = document.getElementById('textDisplay')

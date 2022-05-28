@@ -2,7 +2,8 @@
 const racebutton=document.getElementById('raceBtn')
 racebutton.addEventListener('click',()=>{move()})
 
-function move() {
+export default function move() {
+  console.log("hello")
   let i = 0;
   if (i == 0) {
     i = 1;
