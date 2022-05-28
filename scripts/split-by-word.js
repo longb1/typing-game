@@ -1,9 +1,8 @@
 //split by word, so the animation can track when user has completed a word
-export default function splitByWord(){
+export default function splitByWord(QUOTE){
     
-    QUOTE.split(' ').forEach(character =>{
-        console.log(character.length)
-        percentage = character.length/entirequote;
-    })
+    const wordArray = QUOTE.split(' ')
+
+    return wordArray
     
 }
