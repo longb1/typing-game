@@ -1,6 +1,4 @@
 //animates the icons racing each other.
-const racebutton=document.getElementById('raceBtn')
-racebutton.addEventListener('click',()=>{move()})
 
 export default function move(word, charArray) {
   percentage = word.length/charArray.length;
