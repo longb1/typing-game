@@ -2,7 +2,9 @@
 const racebutton=document.getElementById('raceBtn')
 racebutton.addEventListener('click',()=>{move()})
 
-export default function move() {
+export default function move(word, charArray) {
+  percentage = word.length/charArray.length;
+
   console.log("hello")
   let i = 0;
   if (i == 0) {
