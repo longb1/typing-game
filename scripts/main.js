@@ -5,9 +5,9 @@ import inputField from "./input-field.js"
 import checkInput from "./input-field.js"
 
 const RANDOM_QUOTE_API_URL = 'http://api.quotable.io/random'
-const quoteDisplayElement = document.getElementById('textDisplay')
-const quoteInputElement = document.getElementById('textInput')
-const timerElement = document.getElementById('timer')
+const quoteDisplayElement = document.querySelector('[data-text-display]')
+const quoteInputElement = document.querySelector('[data-text-input]')
+const timerElement = document.querySelector('[data-timer]')
 
 let arrayIndex = 0;
 let currentWord;
