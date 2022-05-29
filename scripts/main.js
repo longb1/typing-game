@@ -10,6 +10,7 @@ const quoteInputElement = document.querySelector('[data-text-input]')
 const timerElement = document.querySelector('[data-timer]')
 
 let wordArray;
+let charArray;
 let arrayIndex = 0;
 
 async function getRandomQuote(){
@@ -21,23 +22,22 @@ const startBtn = document.querySelector('[data-start-btn]')
 startBtn.addEventListener('click',async function(){
     const QUOTE = await getRandomQuote()
     wordArray = splitByWord(QUOTE)
-    quoteDisplayElement.textContent=QUOTE;
+    charArray = splitByChar(QUOTE)
+    // quoteDisplayElement.textContent=QUOTE;
     quoteInputElement.disabled=false;
     console.log(wordArray)
-
-    
-
 })
 
 quoteInputElement.addEventListener('keypress',function(e){
     
     if (e.key==" "){
-        e.preventDefault();
+        
         let currentWord = wordArray[arrayIndex]
         const lastWord= wordArray[wordArray.length - 1]
 
         const userInput=quoteInputElement.value
         if(userInput == currentWord && userInput != lastWord){
+            e.preventDefault();
             arrayIndex++;
             //move to next word in array
             currentWord = wordArray[arrayIndex]
@@ -53,6 +53,7 @@ quoteInputElement.addEventListener('keypress',function(e){
             quoteInputElement.disabled="true";
             console.log("noice")
         }else{
+            
             quoteInputElement.style.backgroundColor="red"
             console.log(`wrong! type ${currentWord}`)
         }
@@ -61,28 +62,23 @@ quoteInputElement.addEventListener('keypress',function(e){
 
 
 
-// quoteInputElement.addEventListener('input', ()=>{
-//     const arrayQuote = quoteDisplayElement.querySelectorAll('span')
-//     const arrayValue = quoteInputElement.value.split('')
-//     let correct = true
-//     arrayQuote.forEach((characterSpan, index)=>{
-//         const character = arrayValue[index]
-//         if(character==null){
-//             characterSpan.classList.remove('correct')
-//             characterSpan.classList.remove('incorrect')
-//             correct = false
-//         } else if(character===characterSpan.innerText){
-//             characterSpan.classList.add('correct')
-//             characterSpan.classList.remove('incorrect')
-//         }else{
-//             characterSpan.classList.remove('correct')
-//             characterSpan.classList.add('incorrect')
-//             correct = false
-//         }
-//     })
-
-//     if(correct) renderNewQuote()
-// })
+quoteInputElement.addEventListener('input', ()=>{
+    const arrayQuote = quoteDisplayElement.querySelectorAll('span')
+    const arrayValue = quoteInputElement.value.split('')
+    arrayQuote.forEach((characterSpan, index)=>{
+        const character = arrayValue[index]
+        if(character==null){
+            characterSpan.classList.remove('correct')
+            characterSpan.classList.remove('incorrect')
+        } else if(character===characterSpan.innerText){
+            characterSpan.classList.add('correct')
+            characterSpan.classList.remove('incorrect')
+        }else{
+            characterSpan.classList.remove('correct')
+            characterSpan.classList.add('incorrect')
+        }
+    })
+})
 
 
 //timers
