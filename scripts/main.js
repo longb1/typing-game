@@ -9,7 +9,7 @@ const quoteDisplayElement = document.querySelector('[data-text-display]')
 const quoteInputElement = document.querySelector('[data-text-input]')
 const timerElement = document.querySelector('[data-timer]')
 
-let currentText;
+let wordArray;
 let arrayIndex = 0;
 
 async function getRandomQuote(){
@@ -20,29 +20,38 @@ async function getRandomQuote(){
 const startBtn = document.querySelector('[data-start-btn]')
 startBtn.addEventListener('click',async function(){
     const QUOTE = await getRandomQuote()
-    currentText = splitByWord(QUOTE)
+    wordArray = splitByWord(QUOTE)
     quoteDisplayElement.textContent=QUOTE;
     quoteInputElement.disabled=false;
-    console.log(currentText)
+    console.log(wordArray)
 
     
 
 })
 
 quoteInputElement.addEventListener('keypress',function(e){
+    
     if (e.key==" "){
-        let currentWord = currentText[arrayIndex]
-        console.log(currentWord)
-        // checkInput(textInput.value)
+        e.preventDefault();
+        let currentWord = wordArray[arrayIndex]
+        const lastWord= wordArray[wordArray.length - 1]
+
         const userInput=quoteInputElement.value
-        if(userInput == currentWord){
+        if(userInput == currentWord && userInput != lastWord){
             arrayIndex++;
             //move to next word in array
-            currentWord = currentText[arrayIndex]
+            currentWord = wordArray[arrayIndex]
+            
             quoteInputElement.value=""
-           
-        }else if(currentWord ==null){
-            reset()
+        }else if(userInput==lastWord){
+            // reset function
+            arrayIndex = 0;
+            currentWord='';
+            wordArray=[];
+            quoteDisplayElement.innerHTML=''
+            quoteInputElement.value = 'Start typing here...'
+            quoteInputElement.disabled="true";
+            console.log("noice")
         }else{
             quoteInputElement.style.backgroundColor="red"
             console.log(`wrong! type ${currentWord}`)
