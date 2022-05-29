@@ -23,8 +23,10 @@ startBtn.addEventListener('click',async function(){
     const QUOTE = await getRandomQuote()
     wordArray = splitByWord(QUOTE)
     charArray = splitByChar(QUOTE)
-    // quoteDisplayElement.textContent=QUOTE;
     quoteInputElement.disabled=false;
+    quoteInputElement.value = ''
+    quoteInputElement.focus()
+
     console.log(wordArray)
 })
 
@@ -53,7 +55,6 @@ quoteInputElement.addEventListener('keypress',function(e){
             quoteInputElement.disabled="true";
             console.log("noice")
         }else{
-            
             quoteInputElement.style.backgroundColor="red"
             console.log(`wrong! type ${currentWord}`)
         }
