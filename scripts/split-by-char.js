@@ -6,6 +6,7 @@ export default function splitByChar(QUOTE){
     console.log(charArray)
     charArray.forEach(character =>{
         const characterSpan = document.createElement('span')
+        characterSpan.classList.add("incomplete")
         characterSpan.innerText = character
         characterSpan.style.color="blue"
         quoteDisplayElement.appendChild(characterSpan)

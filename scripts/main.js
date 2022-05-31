@@ -10,8 +10,8 @@ const quoteInputElement = document.querySelector('[data-text-input]')
 const timerElement = document.querySelector('[data-timer]')
 
 let wordArray;
-let charArray;
 let arrayIndex = 0;
+let charArray
 
 async function getRandomQuote(){
     const response = await fetch(RANDOM_QUOTE_API_URL)
@@ -31,7 +31,7 @@ startBtn.addEventListener('click',async function(){
 })
 
 quoteInputElement.addEventListener('keypress',function(e){
-    
+    const spanArray = quoteDisplayElement.querySelectorAll('span.incomplete')
     if (e.key==" "){
         
         let currentWord = wordArray[arrayIndex]
@@ -39,6 +39,12 @@ quoteInputElement.addEventListener('keypress',function(e){
 
         const userInput=quoteInputElement.value
         if(userInput == currentWord && userInput != lastWord){
+            const completedChars= userInput.split("")
+
+            for(let i=0;i<completedChars.length;i++){
+                spanArray[i].classList.remove("incomplete") //removes class off the fist # of nodelist.
+            }
+
             e.preventDefault();
             arrayIndex++;
             //move to next word in array
@@ -64,10 +70,13 @@ quoteInputElement.addEventListener('keypress',function(e){
 
 
 quoteInputElement.addEventListener('input', ()=>{
-    const arrayQuote = quoteDisplayElement.querySelectorAll('span')
+    //if current input matches current word, start highlighting from next word onwards
+    const spanArray = quoteDisplayElement.querySelectorAll('span.incomplete')
+    
     const arrayValue = quoteInputElement.value.split('')
-    arrayQuote.forEach((characterSpan, index)=>{
+    spanArray.forEach((characterSpan, index)=>{
         const character = arrayValue[index]
+
         if(character==null){
             characterSpan.classList.remove('correct')
             characterSpan.classList.remove('incorrect')
