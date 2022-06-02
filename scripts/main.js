@@ -3,6 +3,7 @@ import splitByChar from "./split-by-char.js"
 import splitByWord from "./split-by-word.js"
 import checkInput from "./input-field.js"
 import start from "./start.js"
+import reset from "./reset.js"
 
 const RANDOM_QUOTE_API_URL = 'http://api.quotable.io/random'
 const quoteDisplayElement = document.querySelector('[data-text-display]')
@@ -54,15 +55,12 @@ quoteInputElement.addEventListener('keypress',function(e){
             quoteInputElement.value=""
         }else if(userInput==lastWord){
             // reset function
-            arrayIndex = 0;
-            currentWord='';
-            wordArray=[];
-            quoteDisplayElement.innerHTML=''
-            quoteInputElement.value = 'Start typing here...'
-            quoteInputElement.disabled="true";
-            console.log("noice")
+            reset(arrayIndex,currentWord,wordArray)
         }else{
-            quoteInputElement.style.backgroundColor="red"
+            // if(userInput != currentWord){
+            //         // quoteInputElement.style.backgroundColor="red"
+
+            // }
             console.log(`wrong! type ${currentWord}`)
         }
     }
@@ -87,6 +85,7 @@ quoteInputElement.addEventListener('input', ()=>{
         }else{
             characterSpan.classList.remove('correct')
             characterSpan.classList.add('incorrect')
+            quoteInputElement.style.backgroundColor="red"
         }
     })
 })
