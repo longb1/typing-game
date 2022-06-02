@@ -34,18 +34,19 @@ quoteInputElement.addEventListener('keypress',function(e){
     const spanArray = quoteDisplayElement.querySelectorAll('span.incomplete')
     if (e.key==" "){
         
-        let currentWord = wordArray[arrayIndex]
+        let currentWord = wordArray[arrayIndex] //get curent word (no spaces)
         const lastWord= wordArray[wordArray.length - 1]
-
         const userInput=quoteInputElement.value
-        if(userInput == currentWord && userInput != lastWord){
-            const completedChars= userInput.split("")
 
-            for(let i=0;i<completedChars.length;i++){
-                spanArray[i].classList.remove("incomplete") //removes class off the fist # of nodelist.
+        if(userInput == currentWord && userInput != lastWord){
+            e.preventDefault();
+
+            const completedChars= userInput.split("")
+            for(let i=0;i<completedChars.length+1;i++){ //add 1 to length so it includes the space as well.
+                spanArray[i].classList.remove("incomplete") //removes class off the first # of nodelist.
+                spanArray[i].classList.add("correct")
             }
 
-            e.preventDefault();
             arrayIndex++;
             //move to next word in array
             currentWord = wordArray[arrayIndex]
