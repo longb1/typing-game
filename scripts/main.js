@@ -14,12 +14,17 @@ let wordArray;
 let arrayIndex = 0;
 let charArray
 
+window.onload = function() {
+    reset(arrayIndex,wordArray)
+};
+
 async function getRandomQuote(){
     const response = await fetch(RANDOM_QUOTE_API_URL)
     const data = await response.json()
     return data.content
 }
 const startBtn = document.querySelector('[data-start-btn]')
+
 startBtn.addEventListener('click',async function(){
     const QUOTE = await getRandomQuote()
     wordArray = splitByWord(QUOTE)
@@ -56,12 +61,6 @@ quoteInputElement.addEventListener('keypress',function(e){
         }else if(userInput==lastWord){
             // reset function
             reset(arrayIndex,currentWord,wordArray)
-        }else{
-            // if(userInput != currentWord){
-            //         // quoteInputElement.style.backgroundColor="red"
-
-            // }
-            console.log(`wrong! type ${currentWord}`)
         }
     }
 })
@@ -82,10 +81,13 @@ quoteInputElement.addEventListener('input', ()=>{
         } else if(character===characterSpan.innerText){
             characterSpan.classList.add('correct')
             characterSpan.classList.remove('incorrect')
+            quoteInputElement.style.backgroundColor=""
         }else{
             characterSpan.classList.remove('correct')
             characterSpan.classList.add('incorrect')
+
             quoteInputElement.style.backgroundColor="red"
+            
         }
     })
 })
