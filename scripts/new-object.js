@@ -17,6 +17,4 @@ export default function newText(QUOTE) {
         this.arrayIndex=newIndex;
       }
     };
-  }
-  
-  let newText = createPerson('John', 'Doe');
+}

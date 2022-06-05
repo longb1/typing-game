@@ -1,5 +1,3 @@
-import splitByChar from "./split-by-char.js"
-import splitByWord from "./split-by-word.js"
 import reset from "./reset.js"
 import move from "./animate-race.js"
 import newText from "./new-object.js"
@@ -36,7 +34,7 @@ startBtn.addEventListener('click',async function(){
 quoteInputElement.addEventListener('keypress',function(e){
     const spanArray = quoteDisplayElement.querySelectorAll('span.incomplete')
     if (e.key==" "){
-        let currentWord = wordArray[arrayIndex] //get curent word (no spaces)
+        let currentWord = currentText.wordArray[currentText.arrayIndex] //get curent word (no spaces)
         const lastWord= wordArray[wordArray.length - 1]
         const userInput=quoteInputElement.value
 
