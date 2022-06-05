@@ -1,9 +1,7 @@
-import move from "./animate-race.js"
 import splitByChar from "./split-by-char.js"
 import splitByWord from "./split-by-word.js"
-import checkInput from "./input-field.js"
-import start from "./start.js"
 import reset from "./reset.js"
+import move from "./animate-race.js"
 
 const RANDOM_QUOTE_API_URL = 'http://api.quotable.io/random'
 const quoteDisplayElement = document.querySelector('[data-text-display]')
@@ -13,6 +11,7 @@ const timerElement = document.querySelector('[data-timer]')
 let wordArray;
 let arrayIndex = 0;
 let charArray
+let progressBar=0;
 
 window.onload = function() {
     reset(arrayIndex,wordArray)
@@ -39,13 +38,14 @@ startBtn.addEventListener('click',async function(){
 quoteInputElement.addEventListener('keypress',function(e){
     const spanArray = quoteDisplayElement.querySelectorAll('span.incomplete')
     if (e.key==" "){
-        
         let currentWord = wordArray[arrayIndex] //get curent word (no spaces)
         const lastWord= wordArray[wordArray.length - 1]
         const userInput=quoteInputElement.value
 
         if(userInput == currentWord && userInput != lastWord){
+            progressBar= move(progressBar,userInput,charArray)
             e.preventDefault();
+            
 
             const completedChars= userInput.split("")
             for(let i=0;i<completedChars.length+1;i++){ //add 1 to length so it includes the space as well.
@@ -59,8 +59,9 @@ quoteInputElement.addEventListener('keypress',function(e){
             
             quoteInputElement.value=""
         }else if(userInput==lastWord){
-            // reset function
-            reset(arrayIndex,currentWord,wordArray)
+            const elem = document.getElementById("racer");
+            elem.style.width=`100%`
+            // reset(arrayIndex,currentWord,wordArray)
         }
     }
 })

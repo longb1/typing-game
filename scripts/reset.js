@@ -8,5 +8,5 @@ export default function reset(arrayIndex,currentWord,wordArray){
     quoteDisplayElement.innerHTML=''
     quoteInputElement.value = 'Start typing here...'
     quoteInputElement.disabled="true";
-    console.log("noice")
+    console.log("done")
 }
