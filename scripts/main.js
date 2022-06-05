@@ -2,16 +2,14 @@ import splitByChar from "./split-by-char.js"
 import splitByWord from "./split-by-word.js"
 import reset from "./reset.js"
 import move from "./animate-race.js"
+import newText from "./new-object.js"
 
 const RANDOM_QUOTE_API_URL = 'http://api.quotable.io/random'
 const quoteDisplayElement = document.querySelector('[data-text-display]')
 const quoteInputElement = document.querySelector('[data-text-input]')
 const timerElement = document.querySelector('[data-timer]')
 
-let wordArray;
-let arrayIndex = 0;
-let charArray
-let progressBar=0;
+let currentText;
 
 window.onload = function() {
     reset(arrayIndex,wordArray)
@@ -26,13 +24,13 @@ const startBtn = document.querySelector('[data-start-btn]')
 
 startBtn.addEventListener('click',async function(){
     const QUOTE = await getRandomQuote()
-    wordArray = splitByWord(QUOTE)
-    charArray = splitByChar(QUOTE)
+    
+    currentText = newText(QUOTE)
+
     quoteInputElement.disabled=false;
     quoteInputElement.value = ''
     quoteInputElement.focus()
 
-    console.log(wordArray)
 })
 
 quoteInputElement.addEventListener('keypress',function(e){
