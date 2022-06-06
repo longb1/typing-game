@@ -1,5 +1,5 @@
 // export default 
-function newText(QUOTE) {
+export default function newText(QUOTE) {
   let progressBar = 0;
   let arrayIndex=0;
   const wordArray = QUOTE.split(' ')
@@ -8,26 +8,6 @@ function newText(QUOTE) {
     wordArray, 
     charArray,
     arrayIndex,
-    progressBar,
-    updateProgress(newProgress) {
-      this.progressBar = newProgress;
-    },
-    updateArrayIndex(newIndex){
-      this.arrayIndex=newIndex;
-    }
+    progressBar
   };
 }
-
-let newQuote = newText("hello sir")
-newQuote=newText("john doe")
-// exports.newText = newText;
-
-
-// test('returns an object', ()=>{
-//   expect(newText('hello sir')).toBe({})
-// })
-
-
-test('use array index on word array.', ()=>{
-  expect(newQuote.wordArray[newQuote.arrayIndex]).toBe("john")
-})

@@ -1,6 +1,7 @@
 import reset from "./reset.js"
 import move from "./animate-race.js"
 import newText from "./new-object.test.js"
+import renderQuote from "./render-quote.js"
 
 const RANDOM_QUOTE_API_URL = 'http://api.quotable.io/random'
 const quoteDisplayElement = document.querySelector('[data-text-display]')
@@ -10,7 +11,7 @@ const timerElement = document.querySelector('[data-timer]')
 let currentText;
 
 window.onload = function() {
-    reset(arrayIndex,wordArray)
+    reset()
 };
 
 async function getRandomQuote(){
@@ -21,9 +22,12 @@ async function getRandomQuote(){
 const startBtn = document.querySelector('[data-start-btn]')
 
 startBtn.addEventListener('click',async function(){
+    reset() //wipes display
     const QUOTE = await getRandomQuote()
     
     currentText = newText(QUOTE)
+    renderQuote(currentText.charArray)
+    console.log(`array index: ${currentText.arrayIndex}`)
 
     quoteInputElement.disabled=false;
     quoteInputElement.value = ''
@@ -39,7 +43,7 @@ quoteInputElement.addEventListener('keypress',function(e){
         const userInput=quoteInputElement.value
 
         if(userInput == currentWord && userInput != lastWord){
-            progressBar= move(progressBar,userInput,charArray)
+            currentText.progressBar= move(currentText.progressBar,userInput,currentText.charArray)
             e.preventDefault();
             
 
@@ -49,15 +53,15 @@ quoteInputElement.addEventListener('keypress',function(e){
                 spanArray[i].classList.add("correct")
             }
 
-            arrayIndex++;
+            currentText.arrayIndex++;
             //move to next word in array
-            currentWord = wordArray[arrayIndex]
-            
+            currentWord = currentText.wordArray[currentText.arrayIndex]
+            console.log(`array index: ${currentText.arrayIndex}`)
             quoteInputElement.value=""
+
         }else if(userInput==lastWord){
             const elem = document.getElementById("racer");
             elem.style.width=`100%`
-            // reset(arrayIndex,currentWord,wordArray)
         }
     }
 })
