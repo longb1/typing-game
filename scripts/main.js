@@ -66,8 +66,6 @@ quoteInputElement.addEventListener('keypress',function(e){
     }
 })
 
-
-
 quoteInputElement.addEventListener('input', ()=>{
     //if current input matches current word, start highlighting from next word onwards
     const spanArray = quoteDisplayElement.querySelectorAll('span.incomplete')
